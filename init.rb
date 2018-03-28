@@ -1,3 +1,6 @@
+require "redmine"
+require "user_patch"
+
 Redmine::Plugin.register :redmine_incentive_plugin do
   name 'Redmine Incentive Plugin plugin'
   author 'Soonoh Jung'
@@ -6,3 +9,4 @@ Redmine::Plugin.register :redmine_incentive_plugin do
   url 'http://example.com/path/to/plugin'
   author_url 'http://example.com/about'
 end
+
