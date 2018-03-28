@@ -7,8 +7,8 @@ module UserPatch
   # Therefore we define an own hash which will be merged with USER_FORMATS
   MY_PLUGIN_USER_FORMATS = {
       :my_custom_name_format => {
-          :string => '#{firstname} #{lastname} #{!xp.to_s.empty? ? "("+xp.to_s+")":"00"}',
-          :order => %w(firstname lastname id),
+          :string => '#{lastname}, #{firstname} #{!xp.to_s.empty? ? "("+xp.to_s+")":"00"}',
+          :order => %w(lastname firstname id),
           :setting_order => 8
       },
   }
