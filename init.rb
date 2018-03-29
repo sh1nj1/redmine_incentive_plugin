@@ -1,5 +1,6 @@
-require "redmine"
-require "user_patch"
+require 'redmine'
+require 'user_patch'
+require 'hooks'
 
 Redmine::Plugin.register :redmine_incentive_plugin do
   name 'Redmine Incentive Plugin plugin'

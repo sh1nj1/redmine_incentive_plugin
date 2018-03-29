@@ -1,0 +1,19 @@
+<div class="user_scores">
+  <p>
+    <strong>User Scores</strong>
+  </p>
+  <table width="100%">
+    <tr align="left">
+      <th width="20%">User</th>
+      <th width="20%">XP</th>
+      <th width="60%">Hours</th>
+    </tr>
+    <% userSpMap.each do |user, userSp| %>
+    <tr>
+      <td><%= user %></td>
+      <td><%= issue.status.is_closed? ? userXpMap[user] : userXpMap[user] + userSp.round %>(+<%= userSp.round %>)</td>
+      <td><%= userHoursMap[user] %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
