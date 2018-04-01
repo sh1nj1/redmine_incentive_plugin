@@ -1,0 +1,40 @@
+
+<% if defined? userSpMap and ! userSpMap.empty? %>
+
+<div class="user_scores">
+  <p>
+    <strong><%=l(:user_scores)%></strong>
+  </p>
+  <div class="splitcontent">
+    <div class="splitcontentleft">
+      <div class="attribute">
+        <div class="label"><strong><%=l(:rank)%></strong></div>
+        <div class="value"><strong><%=l(:user)%></strong></div>
+      </div>
+
+      <% i = 1 %>
+      <% userSpMap.each do |user, userSp| %>
+        <div class="attribute">
+          <div class="label" style="font-weight: normal"><%=i%></div>
+          <div class="value"><%=user%></div>
+        </div>
+      <% i = i + 1 %>
+      <% end %>
+    </div>
+    <div class="splitcontentleft">
+      <div class="attribute">
+        <div class="label"><strong><%=l(:scores)%></strong></div>
+        <div class="value"><strong><%=l(:hours)%></strong></div>
+      </div>
+
+      <% userSpMap.each do |user, userSp| %>
+        <div class="attribute">
+          <div class="label" style="font-weight: normal"><%=issue.status.is_closed? ? userXpMap[user] : userXpMap[user] + userSp.round %>(+<%= userSp.round %>)</div>
+          <div class="value"><%=userHoursMap[user]%></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% end %>
