@@ -15,7 +15,7 @@ Redmine::Plugin.register :redmine_incentive_plugin do
            :default => {
                :display_xp_in_user_format => true,
                :custom_field_id__xp => ' ',
-               :custom_field_id__sp => ' '
+               :custom_field_id__sp => ' ',
+               :user_point_expression => RedmineIncentivePlugin::DEFAULT_USER_POINT_EXPRESSION
            }
 end
-

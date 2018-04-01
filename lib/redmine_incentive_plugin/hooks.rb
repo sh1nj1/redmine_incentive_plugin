@@ -1,19 +1,25 @@
 module RedmineIncentivePlugin
 
+  DEFAULT_USER_POINT_EXPRESSION = 'issue_point * 1000 * (time_entry.hours / issue.total_spent_hours)'
+
   def self.userScoresMap(issue)
 
     xpId = Setting.plugin_redmine_incentive_plugin['custom_field_id__xp'].to_i
     spId = Setting.plugin_redmine_incentive_plugin['custom_field_id__sp'].to_i
+    userPointExpression = Setting.plugin_redmine_incentive_plugin['user_point_expression'].to_s
 
     userXpMap = Hash.new(0) # each item's default value is 0
     userSpMap = Hash.new(0)
     userHoursMap = Hash.new(0)
 
-    sp = issue.custom_value_for(spId).to_s.to_f
-    total = issue.total_spent_hours
+    issue_point = issue.custom_value_for(spId).to_s.to_f
 
     issue.time_entries.map do |time_entry|
-      userSp = sp * 1000 * (time_entry.hours / total)
+      begin
+        userSp = eval("#{userPointExpression}").to_i
+      rescue
+        userSp = eval("#{DEFAULT_USER_POINT_EXPRESSION}").to_i
+      end
       user = time_entry.user
       userXpValue = user.custom_value_for(xpId)
       if userXpValue.nil?
