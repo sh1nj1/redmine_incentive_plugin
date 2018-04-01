@@ -69,7 +69,7 @@ module RedmineIncentivePlugin
       context.merge!(RedmineIncentivePlugin::userScoresMap(issue))
 
       context[:controller].send(:render_to_string, {
-          :partial => "hooks/redmine_incentive_plugin/view_issues_form_details_bottom",
+          :partial => "redmine_incentive_plugin/hooks/view_issues_form_details_bottom",
           :locals => context
       })
     end
