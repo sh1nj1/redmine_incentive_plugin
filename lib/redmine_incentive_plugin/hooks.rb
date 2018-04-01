@@ -16,7 +16,7 @@ module RedmineIncentivePlugin
 
     issue.time_entries.map do |time_entry|
       begin
-        userSp = eval("#{userPointExpression}").to_i
+        userSp = eval("#{userPointExpression.empty? ? DEFAULT_USER_POINT_EXPRESSION : userPointExpression}").to_i
       rescue
         userSp = eval("#{DEFAULT_USER_POINT_EXPRESSION}").to_i
       end
