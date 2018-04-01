@@ -1,3 +1,6 @@
+
+<% if defined? userSpMap and ! userSpMap.empty? %>
+<%= userSpMap %>
 <div class="user_scores">
   <p>
     <strong>User Scores</strong>
@@ -17,3 +20,5 @@
     <% end %>
   </table>
 </div>
+
+<% end %>
