@@ -25,8 +25,6 @@ module RedmineIncentivePlugin
     module InstanceMethods
       # This method will be included in the User-class to retrieve the field value of your custom field
       def xp
-        # look for our custom field in the database
-        #
         xpId = Setting.plugin_redmine_incentive_plugin['custom_field_id__xp'].to_i
 
         cf = CustomField.find_by_id(xpId)
@@ -44,7 +42,7 @@ module RedmineIncentivePlugin
       def name_formatter_with_xp_format(formatter = nil)
         format = name_formatter_without_xp_format(formatter)
         displayXp = Setting.plugin_redmine_incentive_plugin['display_xp_in_user_format'].to_i == 1
-        if ! format[:string].ends_with? USER_FORMAT_SCORE and displayXp
+        if !format[:string].ends_with? USER_FORMAT_SCORE and displayXp
           format[:string] = format[:string] + USER_FORMAT_SCORE
         end
         if format[:string].ends_with? USER_FORMAT_SCORE and !displayXp
@@ -55,7 +53,6 @@ module RedmineIncentivePlugin
     end
   end
 
-  # include our patch
   User.send(:include, UserPatch)
 
 end

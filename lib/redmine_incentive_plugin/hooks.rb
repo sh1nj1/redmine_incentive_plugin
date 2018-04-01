@@ -17,7 +17,7 @@ module RedmineIncentivePlugin
       user = time_entry.user
       userXpValue = user.custom_value_for(xpId)
       if userXpValue.nil?
-        user.custom_field_values = {xpId=>0}
+        user.custom_field_values = {xpId => 0}
         user.save_custom_field_values
         userXpValue = user.custom_value_for(xpId)
       end
@@ -32,7 +32,7 @@ module RedmineIncentivePlugin
 
   class Hooks < Redmine::Hook::ViewListener
 
-    def controller_issues_edit_before_save(context={})
+    def controller_issues_edit_before_save(context = {})
 
       issue = context[:issue]
       oldIssue = Issue.find_by_id(issue.id)
@@ -62,7 +62,7 @@ module RedmineIncentivePlugin
       end
     end
 
-    def view_issues_show_details_bottom(context={})
+    def view_issues_show_details_bottom(context = {})
 
       issue = context[:issue]
 
