@@ -40,12 +40,13 @@ module RedmineIncentivePlugin
     module ClassMethods
 
       def name_formatter_with_xp_format(formatter = nil)
-        format = name_formatter_without_xp_format(formatter)
         displayXp = Setting.plugin_redmine_incentive_plugin['display_xp_in_user_format'].to_i == 1
-        if !format[:string].ends_with? USER_FORMAT_SCORE and displayXp
-          format[:string] = format[:string] + USER_FORMAT_SCORE
+        format = name_formatter_without_xp_format(formatter)
+        formatIncluded = format[:string].ends_with? USER_FORMAT_SCORE
+        if !formatIncluded and displayXp
+          format[:string] += USER_FORMAT_SCORE
         end
-        if format[:string].ends_with? USER_FORMAT_SCORE and !displayXp
+        if formatIncluded and !displayXp
           format[:string].slice! USER_FORMAT_SCORE
         end
         format
