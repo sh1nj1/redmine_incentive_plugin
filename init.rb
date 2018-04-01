@@ -4,11 +4,11 @@ require 'redmine_incentive_plugin/hooks'
 
 Redmine::Plugin.register :redmine_incentive_plugin do
   name 'Redmine Incentive Plugin'
-  author 'Soonoh Jung'
+  author 'chk0ndanger'
   description 'Simple incentive system with custom fields and time log'
   version '0.0.1'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
+  url 'https://github.com/sh1nj1/redmine_incentive_plugin'
+  author_url ''
 
 
   settings :partial => 'redmine_incentive_plugin/settings',

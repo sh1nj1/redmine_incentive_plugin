@@ -1,4 +1,4 @@
-# redmine_incentive_plugin
+# Redmine Incentive Plugin
 
 Simple incentive system with custom fields and time log.
 
@@ -7,7 +7,7 @@ Simple incentive system with custom fields and time log.
 * Log time on Issue
 * When the Issue is closing, all contributed users get points.
 
-# Test redmine version
+# Tested redmine version
 
 * 3.4.4, 3.2.3
 
