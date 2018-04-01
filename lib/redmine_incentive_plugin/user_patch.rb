@@ -4,6 +4,8 @@ module RedmineIncentivePlugin
 
   module UserPatch
 
+    USER_FORMAT_SCORE = ' (#{!xp.to_s.empty? ? xp.to_s : "0"})'
+
     def self.included(base)
       base.send(:include, InstanceMethods)
 
@@ -24,7 +26,10 @@ module RedmineIncentivePlugin
       # This method will be included in the User-class to retrieve the field value of your custom field
       def xp
         # look for our custom field in the database
-        cf = CustomField.find_by_id(CUSTOM_FIELD_ID__XP)
+        #
+        xpId = Setting.plugin_redmine_incentive_plugin['custom_field_id__xp'].to_i
+
+        cf = CustomField.find_by_id(xpId)
         if cf
           # get the value for the custom field (the method is provided by act_as_customizable behavior plugin)
           custom_value_for(cf)
@@ -38,9 +43,12 @@ module RedmineIncentivePlugin
 
       def name_formatter_with_xp_format(formatter = nil)
         format = name_formatter_without_xp_format(formatter)
-        # TODO: this needs to be optional
-        if ! format[:string].ends_with? ")"
-          format[:string] = format[:string] + ' (#{!xp.to_s.empty? ? xp.to_s : "0"})'
+        displayXp = Setting.plugin_redmine_incentive_plugin['display_xp_in_user_format'].to_i == 1
+        if ! format[:string].ends_with? USER_FORMAT_SCORE and displayXp
+          format[:string] = format[:string] + USER_FORMAT_SCORE
+        end
+        if format[:string].ends_with? USER_FORMAT_SCORE and !displayXp
+          format[:string].slice! USER_FORMAT_SCORE
         end
         format
       end

@@ -1,0 +1,26 @@
+
+<p><%= setting_label(:display_xp_in_user_format, {}).html_safe %>
+  <%= hidden_field_tag("settings[display_xp_in_user_format]", 0, :id => nil).html_safe +
+      check_box_tag("settings[display_xp_in_user_format]", 1, settings['display_xp_in_user_format'].to_s != '0', {}).html_safe %></p>
+<%
+  customFields = CustomField.all
+  userCustomFieldChoices = [' ']
+  issueCustomFieldChoices = [' ']
+  customFields.map do |customField|
+    if customField.type == 'IssueCustomField' and (customField.field_format == 'float' or customField.field_format == 'int')
+      issueCustomFieldChoices.push [customField.name, customField.id]
+    end
+    if customField.type == 'UserCustomField' and (customField.field_format == 'float' or customField.field_format == 'int')
+      userCustomFieldChoices.push [customField.name, customField.id]
+    end
+  end
+%>
+<p><%= setting_label(:custom_field_id__xp, {}).html_safe %>
+   <%= select_tag("settings[custom_field_id__xp]",
+                  options_for_select(userCustomFieldChoices, settings['custom_field_id__xp'].to_s),
+                  {:style => "width: 250px"}).html_safe %></p>
+<p><%= setting_label(:custom_field_id__sp, {}).html_safe %>
+  <%= select_tag("settings[custom_field_id__sp]",
+                 options_for_select(issueCustomFieldChoices, settings['custom_field_id__sp'].to_s),
+                 {:style => "width: 250px"}).html_safe %></p>
+
