@@ -3,16 +3,18 @@
 <%= userSpMap %>
 <div class="user_scores">
   <p>
-    <strong>User Scores</strong>
+    <strong><%=l(:user_scores)%></strong>
   </p>
   <table width="100%">
     <tr align="left">
-      <th width="20%">User</th>
-      <th width="20%">XP</th>
-      <th width="60%">Hours</th>
+      <th width="10%"><%=l(:rank)%></th>
+      <th width="20%"><%=l(:user)%></th>
+      <th width="20%"><%=l(:scores)%></th>
+      <th width="50%"><%=l(:hours)%></th>
     </tr>
     <% userSpMap.each do |user, userSp| %>
     <tr>
+      <td><%= ++i%></td>
       <td><%= user %></td>
       <td><%= issue.status.is_closed? ? userXpMap[user] : userXpMap[user] + userSp.round %>(+<%= userSp.round %>)</td>
       <td><%= userHoursMap[user] %></td>
