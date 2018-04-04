@@ -33,6 +33,7 @@ module RedmineIncentivePlugin
         userHoursMap[user] = userHoursMap[user] + time_entry.hours
       end
     end
+    userSpMap = userSpMap.sort_by {|_,sp| sp}.reverse.to_h
     {:userSpMap => userSpMap, :userXpMap => userXpMap, :userHoursMap => userHoursMap}
   end
 
