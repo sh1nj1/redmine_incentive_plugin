@@ -9,7 +9,10 @@ Simple incentive system with custom fields and time log.
 
 # Tested redmine version
 
-* 3.4.4, 3.2.3
+| plugin version | tested redmine version |
+|----------------|------------------------|
+| 0.1.0          | 3.2.3, 3.4.4           |
+| main           | 6.0.1                  |
 
 # Install
 
