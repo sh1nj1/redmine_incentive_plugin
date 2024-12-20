@@ -2,7 +2,7 @@
 
 Simple incentive system with custom fields and time log.
 
-* Set issue's point
+* Set Issue Points
 * Log time on Issue
 * When the Issue is closing, all contributed users get points.
 
@@ -15,7 +15,7 @@ Simple incentive system with custom fields and time log.
 
 # Install
 
-To install this plugin, follow the general Redmine's Plugin installation.
+To install this plugin, follow the general [Redmine's Plugin installation](https://www.redmine.org/projects/redmine/wiki/Plugins#Installing-a-plugin)
 
 * clone this project to user redmine's plugins directory
 * run `rake redmine:plugins:migrate`
@@ -30,25 +30,26 @@ Find the plugin in the plugin list and click the Configure link.
 
 You have to create two Custom Fields.
 
-* Issue Point
+* Issue Points
   * float or int type
-  * This value is given by Human. A team have to make some rule to set this value, like planning poker.
-* User Point
+  * This value is given by Human. A team have to make some rule to set this value, like using planning poker.
+* User Points
   * float or int type
   * default is 0
   * this is auto-calculated value by this plugin.
+  * Better set this field as read-only.
 
 Finally, you have to set those Custom Fields in the Plugin's configuration.
 
-## User point expression
+## User points expression
 
 * You can set the expression to calculate points for each user when the issue is closing.
 * The default expression is `issue_point * 1000 * (time_entry.hours / issue.total_spent_hours)`
-  This means that user will get share of issue's point by ratio of time log.
+  This means that user will get share of Issue Points by ratio of time log.
 * Issue Point is distributed to each user each time the issue is closing.
 * If issue is re-opening, a User Point is recalled.
 
 # Screens
 
-[user point detail in issue detail screen]
+[User points details in issue detail screen]
 ![User Point on Issue Detail](./docs/redmine-incentive-plugin-issue.png)
