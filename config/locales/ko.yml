@@ -1,0 +1,11 @@
+ko:
+  user_points: "사용자 포인트"
+  rank: "순위"
+  user: "사용자"
+  points: "포인트"
+  hours: "시간"
+  setting_display_xp_in_user_format: "사용자 링크에 사용자 포인트 표시"
+  setting_custom_field_id__xp: "사용자 포인트를 위한 사용자 정의 필드"
+  setting_custom_field_id__sp: "이슈 포인트를 위한 사용자 정의 필드"
+  setting_user_point_expression: "사용자 포인트 식"
+  setting_user_point_expression_help: "사용자 포인트를 계산하기 위해 사용되는 식. 다음 변수를 사용할 수 있다: issue_point, time_entry, issue"
