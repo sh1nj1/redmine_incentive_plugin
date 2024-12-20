@@ -3,8 +3,16 @@
    <%= hidden_field_tag("settings[display_xp_in_user_format]", 0, :id => nil).html_safe +
        check_box_tag("settings[display_xp_in_user_format]", 1, settings['display_xp_in_user_format'].to_s != '0', {}).html_safe %></p>
 
-<p><%= setting_label(:user_point_expression, {}).html_safe %>
-   <%= text_field_tag("settings[user_point_expression]", settings['user_point_expression'], {:size => 100}).html_safe %></p>
+<p>
+  <%= setting_label(:user_point_expression, {}).html_safe %>
+  <%= text_field_tag(
+        "settings[user_point_expression]",
+        (settings['user_point_expression'].present? ? settings['user_point_expression'] : RedmineIncentivePlugin::DEFAULT_USER_POINT_EXPRESSION),
+        :size => 100      # you can also specify columns if desired
+      ) %>
+  <br />
+  <%= l(:setting_user_point_expression_help) %>
+</p>
 <%
   customFields = CustomField.all
   userCustomFieldChoices = [' ']

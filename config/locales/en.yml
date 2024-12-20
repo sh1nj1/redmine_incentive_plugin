@@ -8,4 +8,5 @@ en:
   setting_display_xp_in_user_format: "Display user point in user link"
   setting_custom_field_id__xp: "Custom field for user point"
   setting_custom_field_id__sp: "Custom field for issue point"
-  setting_user_point_expression: "User point expression\nvariables: issue_point, time_entry, issue"
+  setting_user_point_expression: "User point expression"
+  setting_user_point_expression_help: "This expression is used to calculate user point. you can use variables: issue_point, time_entry, issue"
