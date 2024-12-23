@@ -30,7 +30,7 @@
       <% userSpMap.each do |user, userSp| %>
         <div class="attribute">
           <div class="label" style="font-weight: normal"><%=issue.status.is_closed? ? userXpMap[user] : userXpMap[user] + userSp.round %>(+<%= userSp.round %>)</div>
-          <div class="value"><%=userHoursMap[user]%></div>
+          <div class="value"><%=format_hours(userHoursMap[user])%></div>
         </div>
       <% end %>
     </div>
